@@ -6,7 +6,7 @@
 
 int main(int argc,char** argv)
 {
-  if (argc < 3)
+  if (argc < 4)
   {
     std::cerr << "The CMD arguments were not formatted correctly!"
                 << std::endl;
@@ -44,6 +44,8 @@ int main(int argc,char** argv)
   cropFilter->SetLowerBoundaryCropSize(cropSize);
 
   auto filter = FilterType::New();
+  filter->SetThirdDimension(std::stoi(argv[3]));
+  filter->Modified();
   filter->SetInput(cropFilter->GetOutput());
 
   auto writer = WriterType::New();

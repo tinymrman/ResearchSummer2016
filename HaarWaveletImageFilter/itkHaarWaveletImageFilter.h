@@ -18,18 +18,22 @@ public:
 
   itkNewMacro(Self)
   itkTypeMacro(HaarWaveletImageFilter,ImageToImageFilter)
+  itkSetMacro(ThirdDimension,int)
+  itkGetMacro(ThirdDimension,int)
+
 
 protected:
   HaarWaveletImageFilter() {}
   ~HaarWaveletImageFilter() {}
 
-  virtual void ThreadedGenerateData
-  (const typename Superclass::OutputImageRegionType& outputRegionForThread,
-  ThreadIdType threadId);
+  virtual void GenerateData();
+
 
 private:
   HaarWaveletImageFilter(const Self&);
   void operator=(const Self&);
+
+  int m_ThirdDimension;
 };
 
 } //End ITK namespace
